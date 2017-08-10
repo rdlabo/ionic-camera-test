@@ -1,25 +1,26 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+Ionic Nativeのテストサンプルです。
+簡易に書いていますが、Ionic Native Mockなどの使い方の参考になれば幸いです。
 
-## How to use this template
-
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
-
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+## 使い方
+```
+$npm i
+$npm run test
 ```
 
-Then, to run it, cd into `myBlank` and run:
+## 簡単な解説
+テストの設定は[ionic-team/ionic-unit-testing-example](https://github.com/ionic-team/ionic-unit-testing-example)を利用しています。
+既存プロジェクトにテストの設定をしたいという方は[add testing environment](https://github.com/rdlabo/ionic-native-test/commit/f7abb7cd822049218eed682a4077c9ba27e70330)のコミットとか参考にしたらいいと思います。
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+### Mockの作り方
 
-Substitute ios for android if not on a Mac.
+Ionic Nativeをテストするためには、[Using Native Plugins in the Browser](Using Native Plugins in the Browser)を参考にすればいいです。
+簡単にいうと、Native機能呼び出しの時に、用意していたデータに差し替えて返します。例えば、Nativeのカメラの場合、撮影したらBase64の値を返すのですが、それをMockで指定する値でハックする感じです。
+
+本レポジトリでは、[test-config/mocks-ionic.ts](https://github.com/rdlabo/ionic-native-test/blob/master/test-config/mocks-ionic.ts#L82-L88)で定義しています。
+
+### Cameraの呼び出し
+[home.ts](https://github.com/rdlabo/ionic-native-test/blob/master/src/pages/home/home.ts#L18-L43)でやっています。
+非同期となるため、カメラの呼び出しはPromiseでくくってます。あと、privateであることを意図して、class名は先頭は_ではじめています。
+
+### Cameraのテスト
+[home.spec.ts](https://github.com/rdlabo/ionic-native-test/blob/master/src/pages/home/home.spec.ts#L47-L54)でやっています。まぁ、カメラを呼び出して、base64データが返ってくるかをテストしているだけです。
