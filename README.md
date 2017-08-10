@@ -8,7 +8,7 @@ $npm run test
 ```
 
 ## 簡単な解説
-テストの設定は[ionic-team/ionic-unit-testing-example](https://github.com/ionic-team/ionic-unit-testing-example)を利用しています。
+テストの設定は[ionic-team/ionic-unit-testing-example](https://github.com/ionic-team/ionic-unit-testing-example)を参考にしています。
 既存プロジェクトにテストの設定をしたいという方は[add testing environment](https://github.com/rdlabo/ionic-native-test/commit/f7abb7cd822049218eed682a4077c9ba27e70330)のコミットとか参考にしたらいいと思います。
 
 ### Mockの作り方
