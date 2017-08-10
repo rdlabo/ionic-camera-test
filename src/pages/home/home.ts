@@ -17,7 +17,9 @@ export class HomePage {
 
     startupCamera(){
          this._getNativeCamera().then(
-            data => this.base64 = data
+            data => {
+                this.base64 = data;
+            }
         );
     }
 
