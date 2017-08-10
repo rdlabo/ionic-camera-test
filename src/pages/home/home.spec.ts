@@ -5,7 +5,8 @@ import { HomePage as testComponent } from './home';
 import { IonicModule, Platform, NavController} from 'ionic-angular/index';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PlatformMock, StatusBarMock, SplashScreenMock } from '../../../test-config/mocks-ionic';
+import { Camera } from '@ionic-native/camera';
+import { PlatformMock, StatusBarMock, SplashScreenMock, CameraMock } from '../../../test-config/mocks-ionic';
 
 describe('Page1', () => {
     let de: DebugElement;
@@ -30,8 +31,16 @@ describe('Page1', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(testComponent);
         comp = fixture.componentInstance;
+        de = fixture.debugElement.query(By.css('p'));
     });
 
     it('should create component', () => expect(comp).toBeDefined());
+
+    it('should have expected <h3> text', () => {
+        fixture.detectChanges();
+        const p = de.nativeElement;
+        expect(p.innerText).toMatch(/If you get lost, the docs will be your guide./i,
+            '<p> should say something about p tag line');
+    });
 
 });
