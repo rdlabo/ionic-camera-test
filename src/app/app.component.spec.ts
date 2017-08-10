@@ -3,6 +3,7 @@ import { IonicModule, Platform } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import {
@@ -24,7 +25,8 @@ describe('MyApp Component', () => {
             providers: [
                 { provide: StatusBar, useClass: StatusBarMock },
                 { provide: SplashScreen, useClass: SplashScreenMock },
-                { provide: Platform, useClass: PlatformMock }
+                { provide: Platform, useClass: PlatformMock },
+                { provide: Camera }
             ]
         })
     }));

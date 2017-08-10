@@ -1,5 +1,6 @@
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 export class PlatformMock {
   public ready(): Promise<{String}> {
@@ -76,4 +77,12 @@ export class SplashScreenMock extends SplashScreen {
   hide() {
     return;
   }
+}
+
+export class CameraMock extends Camera {
+    getPicture(options) {
+        return new Promise((resolve, reject) => {
+            resolve("BASE_64_ENCODED_DATA_GOES_HERE");
+        })
+    }
 }

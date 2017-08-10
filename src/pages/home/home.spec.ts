@@ -24,6 +24,7 @@ describe('Page1', () => {
                 { provide: Platform, useClass: PlatformMock},
                 { provide: StatusBar, useClass: StatusBarMock },
                 { provide: SplashScreen, useClass: SplashScreenMock },
+                { provide: Camera, useClass: CameraMock}
             ]
         });
     }));
@@ -41,6 +42,15 @@ describe('Page1', () => {
         const p = de.nativeElement;
         expect(p.innerText).toMatch(/If you get lost, the docs will be your guide./i,
             '<p> should say something about p tag line');
+    });
+
+    it('should create camera', () => {
+        comp._getNativeCamera().then(
+            data => {
+                expect(data).toMatch(/data:image\/jpeg;base64,/i,
+                    '<p> should check camera');
+            }
+        );
     });
 
 });
