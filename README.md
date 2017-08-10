@@ -13,7 +13,7 @@ $npm run test
 
 ### Mockの作り方
 
-Ionic Nativeをテストするためには、[Using Native Plugins in the Browser](Using Native Plugins in the Browser)を参考にすればいいです。
+Ionic Nativeをテストするためには、[Using Native Plugins in the Browser](https://ionicframework.com/docs/native/browser.html)を参考にすればいいです。
 簡単にいうと、Native機能呼び出しの時に、用意していたデータに差し替えて返します。例えば、Nativeのカメラの場合、撮影したらBase64の値を返すのですが、それをMockで指定する値でハックする感じです。
 
 本レポジトリでは、[test-config/mocks-ionic.ts](https://github.com/rdlabo/ionic-native-test/blob/master/test-config/mocks-ionic.ts#L82-L88)で定義しています。
